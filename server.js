@@ -2,6 +2,7 @@ const express = require('express');
 const session = require('express-session');
 const { Pool } = require('pg');
 const authRoutes = require('./routes/auth');
+const expenseRoutes = require('./routes/expenses');
 require('dotenv').config();
 
 const app = express();
@@ -30,7 +31,7 @@ app.use((req, res, next) => {
 
 // Use routes
 app.use('/auth', authRoutes);
-
+app.use('/expenses', expenseRoutes);
 
 // Default route
 app.get('/', (req, res) => {
